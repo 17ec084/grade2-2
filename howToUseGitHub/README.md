@@ -1,25 +1,24 @@
-# howToUseGitHub(GitHub‚ÌŽg‚¢•û)
-Ž©Žå“I‚É•×‹­‚µ‚Ä‚¢‚é‚à‚Ì‚Å‚ ‚éB
-## –Ú“I
-GitHub‚ÌŽg‚¢•û‚ð—‰ð‚µAGit‚ÌƒRƒ}ƒ“ƒh‚ðˆê’Ê‚èŽÀŒ±‚µAŽg‚¢Šµ‚ê‚éB‘åŠw‘²‹ÆŒãAŽdŽ–‚ÅGitHub‚ð‚Í‚¶‚ß‚Æ‚·‚é‚³‚Ü‚´‚Ü‚ÈGitŠÂ‹«‚ÉG‚ê‚é‹@‰ï‚ª‚ ‚é‚¾‚ë‚¤‚©‚çA‚»‚ÌŒP—û‚Æ‚µ‚ÄˆÊ’u•t‚¯‚éB  
-‚Ü‚½A‚»‚ê‚Æ“¯Žž‚É‘åŠw‚Å‚Æ‚Á‚½ƒm[ƒg‚Æ‚µ‚ÄGitHub‚ð—˜—p‚·‚é‚±‚Æ‚ÅA‹³Žö‚Ö‚ÌŽ¿–â‚Ìv‘¬‰»A‚»‚µ‚ÄŠO•”‚ÉŒöŠJ‚µ‚Ä‚à’p‚¸‚©‚µ‚­‚È‚¢’ö“x‚Ì˜_—“IŽvl”\—Í‚ÌK“¾‚ð‰Â”\‚Æ‚·‚éB  
-## Žè’i
-ŽŸ‚Ì•¶Œ£‚É‰ˆ‚Á‚Ä•×‹­‚µAMicrosoft Word 2016‚Å‚Ü‚Æ‚ß‚éB(“¯ƒfƒBƒŒƒNƒgƒŠ‚Ìnote.docx‚Ü‚½‚Ínote.pdf) 
+# howToUseGitHub(GitHubã®ä½¿ã„æ–¹)
+è‡ªä¸»çš„ã«å‹‰å¼·ã—ã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ã€‚
+## ç›®çš„
+GitHubã®ä½¿ã„æ–¹ã‚’ç†è§£ã—ã€Gitã®ã‚³ãƒžãƒ³ãƒ‰ã‚’ä¸€é€šã‚Šå®Ÿé¨“ã—ã€ä½¿ã„æ…£ã‚Œã‚‹ã€‚å¤§å­¦å’æ¥­å¾Œã€ä»•äº‹ã§GitHubã‚’ã¯ã˜ã‚ã¨ã™ã‚‹ã•ã¾ã–ã¾ãªGitç’°å¢ƒã«è§¦ã‚Œã‚‹æ©Ÿä¼šãŒã‚ã‚‹ã ã‚ã†ã‹ã‚‰ã€ãã®è¨“ç·´ã¨ã—ã¦ä½ç½®ä»˜ã‘ã‚‹ã€‚    
+## æ‰‹æ®µ
+æ¬¡ã®æ–‡çŒ®ã«æ²¿ã£ã¦å‹‰å¼·ã—ã€Microsoft Word 2016ã§ã¾ã¨ã‚ã‚‹ã€‚(åŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®note.docxã¾ãŸã¯note.pdf) 
 <!--(
-pdf‚ÍGitHubã‚Å‰{——‰Â”\‚Å‚ ‚Á‚½B11:42 2018/11/24 
-docxƒtƒ@ƒCƒ‹‚ÍGitHubã‚Å‰{——‚Å‚«‚È‚©‚Á‚½B11:42 2018/11/24 
+pdfã¯GitHubä¸Šã§é–²è¦§å¯èƒ½ã§ã‚ã£ãŸã€‚11:42 2018/11/24 
+docxãƒ•ã‚¡ã‚¤ãƒ«ã¯GitHubä¸Šã§é–²è¦§ã§ããªã‹ã£ãŸã€‚11:42 2018/11/24 
 )--> 
-uGitHubƒ|ƒPƒbƒgƒŠƒtƒ@ƒŒƒ“ƒX àV“c‘×Ž¡E¬—Ñ‹M–ç’˜ ‹Zp•]˜_ŽÐv  
-‚Ü‚½A‚»‚Ì‘¼ŽQl‚É‚µ‚½‚à‚Ì‚ª‚ ‚ê‚ÎA‚»‚Ì“s“x–¾Ž¦‚·‚éB  
-## Žg—pƒ\ƒtƒg
-uGitHub Desktopv  
-uGit for Windowsv
+ã€ŒGitHubãƒã‚±ãƒƒãƒˆãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ æ¾¤ç”°æ³°æ²»ãƒ»å°æž—è²´ä¹Ÿè‘— æŠ€è¡“è©•è«–ç¤¾ã€  
+ã¾ãŸã€ãã®ä»–å‚è€ƒã«ã—ãŸã‚‚ã®ãŒã‚ã‚Œã°ã€ãã®éƒ½åº¦æ˜Žç¤ºã™ã‚‹ã€‚  
+## ä½¿ç”¨ã‚½ãƒ•ãƒˆ
+ã€ŒGitHub Desktopã€  
+ã€ŒGit for Windowsã€
 
-## ‚»‚Ì‘¼“Á‹L‚·‚×‚«Ž–€
-¡‰ñ‚ÌŽå—vŽQl•¶Œ£‚Í2018”N10ŒŽ‚É”­s‚³‚ê‚½‚à‚Ì‚Å‚ ‚èA‚±‚Ì•×‹­‚ðŠJŽn‚µ‚½‚Ì‚Í2018”N11ŒŽ‚Å‚ ‚é‚½‚ßAK‰^‚É‚àGitHub‚É‚¨‚¯‚éÅV‚Ìî•ñ‚ð•¶Œ£‚©‚çŽè‚É“ü‚ê‚é‚±‚Æ‚ª‚Å‚«‚éB  
-‚±‚Ì‚±‚Æ‚ÍAƒo[ƒWƒ‡ƒ“‚Ì·ˆÙ‚È‚Ç‚©‚ç¶‚¶‚é–³‘Ê‚È‹ê˜J‚ª­‚È‚¢‚Æ‚¢‚¤‚±‚Æ‚ðˆÓ–¡‚·‚éB  
-‚±‚ÌK‰^‚É—^‚é‚½‚ß‚É‚ÍA‘‚¢‚¤‚¿‚ÉGitHub‚ðK“¾‚µ‚Ä‚µ‚Ü‚¤‚±‚Æ‚ª“¾ô‚Å‚ ‚é‚Æl‚¦‚éB
+## ãã®ä»–ç‰¹è¨˜ã™ã¹ãäº‹é …
+ä»Šå›žã®ä¸»è¦å‚è€ƒæ–‡çŒ®ã¯2018å¹´10æœˆã«ç™ºè¡Œã•ã‚ŒãŸã‚‚ã®ã§ã‚ã‚Šã€ã“ã®å‹‰å¼·ã‚’é–‹å§‹ã—ãŸã®ã¯2018å¹´11æœˆã§ã‚ã‚‹ãŸã‚ã€å¹¸é‹ã«ã‚‚GitHubã«ãŠã‘ã‚‹æœ€æ–°ã®æƒ…å ±ã‚’æ–‡çŒ®ã‹ã‚‰æ‰‹ã«å…¥ã‚Œã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚  
+ã“ã®ã“ã¨ã¯ã€ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®å·®ç•°ãªã©ã‹ã‚‰ç”Ÿã˜ã‚‹ç„¡é§„ãªè‹¦åŠ´ãŒå°‘ãªã„ã¨ã„ã†ã“ã¨ã‚’æ„å‘³ã™ã‚‹ã€‚  
+ã“ã®å¹¸é‹ã«ä¸Žã‚‹ãŸã‚ã«ã¯ã€æ—©ã„ã†ã¡ã«GitHubã‚’ç¿’å¾—ã—ã¦ã—ã¾ã†ã“ã¨ãŒå¾—ç­–ã§ã‚ã‚‹ã¨è€ƒãˆã‚‹ã€‚
 
-(ˆÈ‰º‰Á•M‚Ì•K—v‚ ‚è)
+(ä»¥ä¸‹åŠ ç­†ã®å¿…è¦ã‚ã‚Š)
 
 
