@@ -4,7 +4,7 @@
 GitHub‚ÌŽg‚¢•û‚ð—‰ð‚µAGit‚ÌƒRƒ}ƒ“ƒh‚ðˆê’Ê‚èŽÀŒ±‚µAŽg‚¢Šµ‚ê‚éB‘åŠw‘²‹ÆŒãAŽdŽ–‚ÅGitHub‚ð‚Í‚¶‚ß‚Æ‚·‚é‚³‚Ü‚´‚Ü‚ÈGitŠÂ‹«‚ÉG‚ê‚é‹@‰ï‚ª‚ ‚é‚¾‚ë‚¤‚©‚çA‚»‚ÌŒP—û‚Æ‚µ‚ÄˆÊ’u•t‚¯‚éB  
 ‚Ü‚½A‚»‚ê‚Æ“¯Žž‚É‘åŠw‚Å‚Æ‚Á‚½ƒm[ƒg‚Æ‚µ‚ÄGitHub‚ð—˜—p‚·‚é‚±‚Æ‚ÅA‹³Žö‚Ö‚ÌŽ¿–â‚Ìv‘¬‰»A‚»‚µ‚ÄŠO•”‚ÉŒöŠJ‚µ‚Ä‚à’p‚¸‚©‚µ‚­‚È‚¢’ö“x‚Ì˜_—“IŽvl”\—Í‚ÌK“¾‚ð‰Â”\‚Æ‚·‚éB  
 ## Žè’i
-ŽŸ‚Ì•¶Œ£‚É‰ˆ‚Á‚Ä•×‹­‚µAHirataExPress‚ð—p‚¢‚ÄƒeƒXƒg–â‘èŒ`Ž®‚Å‚Ü‚Æ‚ß‚éB  
+ŽŸ‚Ì•¶Œ£‚É‰ˆ‚Á‚Ä•×‹­‚µAMicrosoft Word 2016‚Å‚Ü‚Æ‚ß‚éB(“¯ƒfƒBƒŒƒNƒgƒŠ‚Ìnote.docx‚Ü‚½‚Ínote.pdf)  
 EGitHubƒ|ƒPƒbƒgƒŠƒtƒ@ƒŒƒ“ƒX àV“c‘×Ž¡E¬—Ñ‹M–ç’˜ ‹Zp•]˜_ŽÐ  
 ‚Ü‚½A‚»‚Ì‘¼ŽQl‚É‚µ‚½‚à‚Ì‚ª‚ ‚ê‚ÎA‚»‚Ì“s“x–¾Ž¦‚·‚éB  
 ## ‚»‚Ì‘¼“Á‹L‚·‚×‚«Ž–€
@@ -12,5 +12,4 @@ GitHub‚ÌŽg‚¢•û‚ð—‰ð‚µAGit‚ÌƒRƒ}ƒ“ƒh‚ðˆê’Ê‚èŽÀŒ±‚µAŽg‚¢Šµ‚ê‚éB‘åŠw‘²‹ÆŒãAŽdŽ
 ‚±‚Ì‚±‚Æ‚ÍAƒo[ƒWƒ‡ƒ“‚Ì·ˆÙ‚È‚Ç‚©‚ç¶‚¶‚é–³‘Ê‚È‹ê˜J‚ª­‚È‚¢‚Æ‚¢‚¤‚±‚Æ‚ðˆÓ–¡‚·‚éB  
 ‚±‚ÌK‰^‚É—^‚é‚½‚ß‚É‚ÍA‘‚¢‚¤‚¿‚ÉGitHub‚ðK“¾‚µ‚Ä‚µ‚Ü‚¤‚±‚Æ‚ª“¾ô‚Å‚ ‚é‚Æl‚¦‚éB
 
-## HirataExPress‚Æ‚Í
 (ˆÈ‰º‰Á•M‚Ì•K—v‚ ‚è)
