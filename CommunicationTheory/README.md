@@ -1,4 +1,4 @@
-# CommunicationTheory(�ʐM���_)
-## �ړI
+﻿# CommunicationTheory(通信理論)
+## 目的
  
-## ��i
+## 手段
