@@ -1,2 +1,0 @@
-﻿# appendices
-付録。
