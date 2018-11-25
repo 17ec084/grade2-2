@@ -7,7 +7,7 @@
 教科書「通信理論基礎の基礎 松本隆男・吉野隆幸共著 東京電機大学出版局」
 の内容を、Microsoft Word 2016を用いて問題形式でまとめる。(最新版はnote3.docx)  
 必要に応じて宿題用のファイルも作成する。  
-また、docxファイルはpdfファイルで公開する。  
+また、docxファイルはpdfファイルで公開する。(例えば[note3.pdf](https://github.com/17ec084/grade2-2/raw/master/communicationTheory/note3.pdf)など)  
 <!--
 時間があれば動画作成も。(暗号理論の動画と統合)
 -->
