@@ -16,9 +16,26 @@
 例えば表0のような配列をポインタソートすると、手順1で表1のようになり、手順2で表2のようになってソートが完了する。  
 <Div Align="center">表0 ソート前の配列</Div>   
 <center>
-  
-| アドレスまたは配列の番目 | 0 | 1 |  2 |  3 | 4 | 5 | 6 |
-|:------------------------:|:-:|:-:|:--:|:--:|:-:|:-:|:-:|
-|          自然数          | 1 | 7 | 14 | 12 | 0 | 8 | 4 |
-
+<table>
+  <tr>
+    <th class="tg-c3ow">アドレスまたは配列の番目</th>
+    <th class="tg-c3ow">0</th>
+    <th class="tg-c3ow">1</th>
+    <th class="tg-c3ow">2</th>
+    <th class="tg-c3ow">3</th>
+    <th class="tg-c3ow">4</th>
+    <th class="tg-c3ow">5</th>
+    <th class="tg-c3ow">6</th>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">自然数</td>
+    <td class="tg-c3ow">1</td>
+    <td class="tg-c3ow">7</td>
+    <td class="tg-c3ow">14</td>
+    <td class="tg-c3ow">12</td>
+    <td class="tg-c3ow">0</td>
+    <td class="tg-c3ow">8</td>
+    <td class="tg-c3ow">4</td>
+  </tr>
+</table>
 </center>
