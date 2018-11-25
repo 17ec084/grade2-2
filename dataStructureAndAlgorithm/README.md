@@ -14,8 +14,8 @@
 2.空いた番地はつめる  
 これで終わり。  
 例えば表0のような配列をポインタソートすると、手順1で表1のようになり、手順2で表2のようになってソートが完了する。  
-<Div Align="center">表0 ソート前の配列</Div>   
-<table Align="center">
+<Div Align="center">表0 ソート前の配列  
+<table>
   <tr>
     <th>アドレスまたは配列の番目</th>
     <th>0</th>
@@ -36,4 +36,4 @@
     <td>8</td>
     <td>4</td>
   </tr>
-</table>
+</table></Div> 
