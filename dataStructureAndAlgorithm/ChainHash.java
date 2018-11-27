@@ -144,15 +144,15 @@ public class ChainHash<K,V>
 
     }
 
-    public int void dump()//ハッシュ表と線形リストをまとめて表示
+    public void dump()//ハッシュ表と線形リストをまとめて表示
     {
         for(int i=0; i<size; i++)//ハッシュ表の大きさだけ繰り返す
         {
-            Node<K,V>p==table[i];
-            System.out.printf(“%02d  ”,i);//整形のため書式指定。printf
+            Node<K,V>p=table[i];
+            System.out.printf("%02d  ",i);//整形のため書式指定。printf
             while(p != null)
             {
-                System.out.printf(“→ %s (%s)”,p.getKey(),p/getValue());
+                System.out.printf("→ %s (%s)",p.getKey(),p.getValue());
                 p = p.next;
             }
             System.out.println();
