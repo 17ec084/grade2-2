@@ -1,4 +1,4 @@
-﻿class q10
+﻿class Q10
 //文字列の中から特定の文字を探し出すアルゴリズム
 {
     static int strpos(String haystack, char needle)
