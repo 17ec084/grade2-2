@@ -1,7 +1,7 @@
 public class IntStack
 {
   private int max;//スタックの容量
-  private int prt;
+  private int ptr;
   private int[] stk;
   public class OverflowIntStackException extends RuntimeException
   {
@@ -42,6 +42,7 @@ public class IntStack
     dataStructureAndAlgorithm/note.pdf
     の答え32(ク)で詳しく説明している。
     */
+  }
   public int pop() throws EmptyIntStackException
   {
     if(ptr<=0)//スタックが空なら
@@ -71,11 +72,11 @@ public class IntStack
   public void dump()
   {
     if(ptr<=0)
-      System.out.println(“スタックは空です。”);
+      System.out.println("スタックは空です。");
     else
     {
       for(int i=0; i<ptr; i++)
-        System.out.print(stk[i] + “ ”);
+        System.out.print(stk[i] + " ");
       System.out.println();
     }
 
