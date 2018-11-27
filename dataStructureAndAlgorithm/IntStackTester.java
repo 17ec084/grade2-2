@@ -1,5 +1,7 @@
 import java.util.Scanner;
 class IntStackTester
+//スタックというデータ構造を利用するプログラム
+//(データ構造の実体を操作するプログラム)
 {
   public static void main(String[] args)
   {

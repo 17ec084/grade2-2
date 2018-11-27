@@ -1,4 +1,5 @@
 public class ChainHash<K,V>
+//チェーン法を利用してハッシュ表を作る
 {
     class Node<K,V>//ノード(線形リストの各要素)を定義
     {

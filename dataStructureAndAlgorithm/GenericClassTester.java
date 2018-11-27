@@ -1,3 +1,4 @@
+//ジェネリックを理解するためのサンプルプログラム
 class GenericClass<T>
 {
     private T xyz;

@@ -1,4 +1,5 @@
 public class IntStack
+//スタックというデータ構造を利用するプログラム(データ構造の実体)
 {
   private int max;//スタックの容量
   private int ptr;
