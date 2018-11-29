@@ -4,8 +4,8 @@
 実験科目「情報通信基礎実験」のレポート作成を効率化するプログラムを開発する。
 
 ## 手段
-1. [Markdown記法によるレポートのひな型](https://github.com/17ec084/grade2-2/blob/master/FLICE/README.md) を作った。  
-2. 各実験ごとに、ひな型に数式、図以外のものを加え、適切なディレクトリに保存する。
+1. [Markdown記法によるレポートのひな型](https://github.com/17ec084/grade2-2/blob/master/FLICE/template.md) を作った。  
+2. ひながた
 3. pandocを利用し、mdファイルをWord形式(.docx)に変換する
 4. 数式と図を加え、ページ番号やその他を適切に編集する。  
 5. 将来的にはphpやCGIなどのプログラムを作成し、レポート作成をさらに自動化したい
