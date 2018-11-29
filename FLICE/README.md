@@ -1,23 +1,24 @@
 ﻿# FLICE(情報通信基礎実験 fundamental Laboratory on Infomation and Communication Engineering)
 実験科目である。
+
 ## 目的
-実験科目「情報通信基礎実験」のレポート作成をMarkDown記法にて行う。  
-これにより、レポートのひな型の作成を可能とする。  
+実験科目「情報通信基礎実験」のレポート作成を効率化する。
+
 ## 手段
-Markdown記法によるレポート作成を行う(各下位ディレクトリのREADME.mdなど)  
-また、必要に応じてdocxファイルで作り直すことがある。  
+1. Markdown記法によるレポートのひな型を作る。  
+2. 各実験ごとに、ひな型に数式、図以外のものを加え、適切なディレクトリに保存する。
+2. pandocを利用し、mdファイルをWord形式(.docx)に変換する
+3. 数式と図を加え、ページ番号やその他を適切に編集する。  
 
-以下、数式のサンプルである。  
-____
+### pandocのインストール及び使用方法
+1. [pandocのサイト](https://github.com/jgm/pandoc/releases/tag/2.2.2.1)から、環境に合うmsiファイルをダウンロードした。  
+2. ダウンロードしたものを開き、同意してインストールした。  
+3. ローカルの、mdファイルでレポートを作成したディレクトリに行き、コマンドプロンプトで`pandoc ./(mdファイル名) -t docx -o report.docx` を実行した。
 
-`![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)` 
- 
-![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)  
-  
-`![](https://latex.codecogs.com/gif.latex?\int_a^(bf(x))dx)` 
- 
-![](https://latex.codecogs.com/gif.latex?\int_a^(bf(x))dx)  
-  
+
 以下、レポートのひな型である。
 ____
 (作成途中)
+
+### 参考サイト
+https://qiita.com/tenten0213/items/f67f5601cbed6ef86b3c
