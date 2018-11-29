@@ -10,9 +10,9 @@ Markdown記法によるレポート作成を行う(各下位ディレクトリ�
 以下、数式のサンプルである。  
 ____
 
-`![](https://latex.codecogs.com/gif.latex?\int_a^b f(x)dx)` 
+`![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)` 
  
-![](https://latex.codecogs.com/gif.latex?\int_a^b f(x)dx)
+![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)
   
 以下、レポートのひな型である。
 ____
