@@ -11,10 +11,7 @@ Markdown記法によるレポート作成を行う(各下位ディレクトリ�
 ____
 
 
-```math
-e^{i\pi}=-1
-```
-
+![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx")
   
 以下、レポートのひな型である。
 ____
