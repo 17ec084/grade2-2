@@ -12,7 +12,11 @@ ____
 
 `![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)` 
  
-![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)
+![](https://latex.codecogs.com/gif.latex?\int_a^bf(x)dx)  
+  
+`![](https://latex.codecogs.com/gif.latex?\int_a^(bf(x))dx)` 
+ 
+![](https://latex.codecogs.com/gif.latex?\int_a^(bf(x))dx)  
   
 以下、レポートのひな型である。
 ____
