@@ -398,7 +398,7 @@ http://www.geisya.or.jp/~mwm48961/electro/condenser2.htm
 23:25 2018/11/30閲覧  
 [7]積層セラミックチップコンデンサ―TDK  
 https\://product.tdk.com/info/ja/techlibrary/archives/techjournal/vol06_mlcc/contents02.html  
-23:17 2018/11/30閲覧
+23:17 2018/11/30閲覧  
 [8] ***タイトルなどは後で***
 https\://www.jstage.jst.go.jp/article/tjsst/4/3/4_81/_pdf
 1:07 2018/12/01閲覧
