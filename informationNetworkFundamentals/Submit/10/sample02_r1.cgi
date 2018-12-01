@@ -79,7 +79,8 @@ $hourLeftOfToday=24-$hour;
 #を加算する必要がある。
 #加算すると、
 $hourLeft=$hourLeftMinimum+$hourLeftOfToday;
-printf("%d時間です。<br>17ec084平田智剛",$hourLeft);
+printf("%d時間です。<br>17ec084平田智剛<br>",$hourLeft);
+printf("他の課題は<a href='https://github.com/17ec084/grade2-2/tree/master/informationNetworkFundamentals/Submit'>GitHub</a>に公開しました。");
 print "</BODY>\n"; 
 print "</HTML>\n";
 
