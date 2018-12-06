@@ -17,4 +17,3 @@ while isEVInArea==true
 isEVInArea=(startX^2<100^2)*(startY^2<100^2)*(startZ^2<100^2);
 end
 
-plot3(x,y,z);
