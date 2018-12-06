@@ -1,5 +1,5 @@
 function [endX,endY,endZ]=plotEV( a,b,c, dx,dy,dz)
-%   plotEV 点Aが作る電場ベクトルを点Dからプロットする
+%plotEV 点Aが作る電場ベクトルを点Dからプロットする
 %   点A(a,b,c)、点D(a+dx,b+dy,c+dz)
 %   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
 
@@ -15,7 +15,7 @@ y=b+dy;
 z=c+dz;
 
 %電場ベクトル(の大きさlengthOfEと単位ベクトルunitOfE)を求める
-[Ex,Ey,Ez]=electricField( a,b,c, x,y,z );
+[Ex,Ey,Ez]=unitElectricField( a,b,c, x,y,z );
 %lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
 %unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
 
