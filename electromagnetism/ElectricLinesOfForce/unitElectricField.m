@@ -4,7 +4,7 @@ function [i,j,k] = unitElectricField( a,b,c,x,y,z )
 
 %unitE=((x-a)^2+(y-b)^2+(z-c)^2)^-0.5)(x-a,y-b,z-c)
 
-scalar=((x-a)^2+(y-b)^2+(z-c)^2)^(-0.5));
+scalar=((x-a)^2+(y-b)^2+(z-c)^2)^(-0.5);
 i=scalar*(x-a);
 j=scalar*(y-b);
 k=scalar*(z-c);
