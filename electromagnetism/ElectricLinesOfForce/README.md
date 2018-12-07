@@ -22,7 +22,7 @@ MatLabで、電荷の電気力線を3Dプロットするプログラムを書こ
 (Q/(4πε(((x-a)^2+(y-b)^2+(z-c)^2)^1.5)))(x-a,y-b,z-c)  
 である。これを求める関数electricField(a,b,c,x,y,z)をMatLabで作ろう。  
 但し、Q=16,ε=1で一定とする。  
-次のようなMatLab関数[electricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/electricField.m) を作成した。
+次のようなMatLab関数[electricField.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/electricField.m) を作成した。
 ```MATLAB
 function [i,j,k] = electricField( a,b,c,x,y,z )
 %electricField 点Aが点Pに作る電場ベクトルを求める
@@ -76,7 +76,7 @@ x座標は1が0を遠ざける向き、即ち-1の向きであるため負の向
 (3) その点を次の電気力線の始点とする  
 (4) (2)と(3)を、(x,y,z)がプロットすべき空間を飛び出るまで繰り返す  
 
-(1)(2)次のようなMatLab関数plotEV.mを作成した。  
+(1)(2)次のようなMatLab関数 [plotEV.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/plotEV.m) を作成した。  
 
 ```MATLAB
 
@@ -247,7 +247,7 @@ plotEL1(0,0,0, 1,0,1)
 但し、実験4では簡単に考えるため、電荷は2個とし、その強さも±16[C]とする。  
 
 ### 2.4.1 実験4の手順
-
+[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField.m) をもとに、電場ベクトルではなく電場方向の単位ベクトルを求めるプログラム[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField.m)を作った。
 
 <!--
 今後の実験予定
