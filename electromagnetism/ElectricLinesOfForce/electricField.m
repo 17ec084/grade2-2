@@ -12,5 +12,11 @@ i=scalar*(x-a);
 j=scalar*(y-b);
 k=scalar*(z-c);
 
+%電場ベクトルが電荷に触れた場合
+%負電荷かつ電場ベクトルが電荷との距離よりも大きくなった場合
+if ((Q<0)*(scalar>=1))
+ i=NaN;
+end
+
 end
 

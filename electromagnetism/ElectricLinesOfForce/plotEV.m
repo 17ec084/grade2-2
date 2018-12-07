@@ -19,24 +19,25 @@ z=c+dz;
 %lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
 %unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
 
-
-x=[0,Ex];
-y=[0,Ey];
-z=[0,Ez];
-x=x+a+dx;
-y=y+b+dy;
-z=z+c+dz;
-
-
-%電場ベクトルの終点
-
-endX=Ex+a+dx;
-endY=Ey+b+dy;
-endZ=Ez+c+dz;
-
-%電場ベクトルを描画
-plot3(x,y,z);
-
+if isnan(Ex)==true
+%負電荷によって電気力線が収束しきった場合
+ endX=NaN;
+ endY=NaN;
+ endZ=NaN;
+else
+ x=[0,Ex];
+ y=[0,Ey];
+ z=[0,Ez];
+ x=x+a+dx;
+ y=y+b+dy;
+ z=z+c+dz;
+ %電場ベクトルの終点
+ endX=Ex+a+dx;
+ endY=Ey+b+dy;
+ endZ=Ez+c+dz;
+ %電場ベクトルを描画
+ plot3(x,y,z);
+end
 
 
 
