@@ -47,7 +47,7 @@ end
 
 MATLABのコマンドラインで次のように入力した。
 
-```
+```MATLAB
 [i,k,j]=electricField(1,0,0,0,0,0);
 v=[i,k,j];
 
@@ -125,7 +125,7 @@ end
 
 このプログラムでは `[Ex,Ey,Ez]=electricField( a,b,c, x,y,z );` で点Aが点Dに作る電場ベクトルを求め、  
 
-```
+```MATLAB
 x=[0,Ex];
 y=[0,Ey];
 z=[0,Ez];
@@ -140,7 +140,7 @@ z=z+c+dz;
 
 (3)(4)次のようなMatLab関数[plotEL1.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/plotEL1.m)を作成した。  
 
-```
+```MATLAB
 function plotEL1( a,b,c, dx,dy,dz)
 %   plotEL1 点Aが作る電気力線を点Dからプロットする
 %   点A(a,b,c)、点D(a+dx,b+dy,c+dz)
@@ -180,7 +180,7 @@ end
 
 MATLABのコマンドラインで次のように入力した。
 
-```
+```MATLAB
 hold off
 hold on
 plotEL1(0,0,0, 1,0,1)
@@ -199,9 +199,9 @@ plotEL1(0,0,0, 1,0,1)
 その為、電場ベクトルの大きさを強制的に一定値に拡大または縮小するよう修正する必要がある。
 
 ### 2.3.1 実験3の手順
-[electricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/electricField.m) をもとに、電場ベクトルではなく電場方向の単位ベクトルを求めるプログラム[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField.m)を作った。
+(1) [electricField.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/electricField.m) をもとに、電場ベクトルではなく電場方向の単位ベクトルを求めるプログラム[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/e41675c75b1e4d99bc245b9ade0db2b54aa69c62/electromagnetism/ElectricLinesOfForce/unitElectricField.m)を作った。
 
-```
+```MATLAB
 function [i,j,k] = unitElectricField( a,b,c,x,y,z )
 %unitElectricField 点Aが点Pに作る電場ベクトルを求める。但し大きさは1になるように強制的に拡大縮小する
 %   点A(a,b,c)、点P(x,y,z)
@@ -216,16 +216,16 @@ k=scalar*(z-c);
 end
 
 ```
-[electricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/electricField.m) との違いは、scalarの大きさだけである。どちらのプログラムでもscalarの((x-a)^2+(y-b)^2+(z-c)^2)^0.5倍が電場ベクトルの大きさとなる。  
+[electricField.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/electricField.m) との違いは、scalarの大きさだけである。どちらのプログラムでもscalarの((x-a)^2+(y-b)^2+(z-c)^2)^0.5倍が電場ベクトルの大きさとなる。  
 
-続いて[plotEV.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/plotEV.m) について、  
+(2) [plotEV.m](https://github.com/17ec084/grade2-2/blob/c8ab7a4d49a2659d725d8086107a83d908ded34f/electromagnetism/ElectricLinesOfForce/plotEV.m) について、  
 electricField関数を呼び出す記述をunitElectricField関数を呼び出す記述に書き換えた。
 
 ### 2.3.2 実験3の結果 
 
 MATLABのコマンドラインで次のように入力した。
 
-```
+```MATLAB
 hold off
 hold on
 plotEL1(0,0,0, 1,0,1)
@@ -235,25 +235,37 @@ plotEL1(0,0,0, 1,0,1)
 各コマンドの意味は、2.2.2項に示すとおりである。  
 
 すると、図2.3.2.1のようなグラフが得られた。但しこの図は得られたグラフに軸の名前を付け、3D回転を加え、補助線などを後から加筆したものである。  
-![図2.3.2.1](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/data/2321.png)  
+![図2.3.2.1](https://github.com/17ec084/grade2-2/blob/3658baabffb6de6a5585f189f77d98639afb5f9d/electromagnetism/data/2321.png)  
 図2.3.2.1 実験3でplotEL1(0,0,0, 1,0,1)を実行した結果  
 
 この図から、電気力線が(1,0,1)とおよそ(101,0,101)を結ぶ線分となっていることが確認できる。
 
 
-## 2.4 実験4 電荷が2つある場合(1/2)―非線形電気力線の描画
-実験3まででは、電荷が1つだけの場合について考えていた。その為電気力線は必ず線形(半直線)となっていた。  
-実験4以降では、電荷が複数になった場合の電気力線を描画することを試みる。  
-但し、実験4では簡単に考えるため、電荷は2個とし、その強さも±16[C]とする。  
+## 2.5 実験5 電荷が2つある場合(1/2)―非線形電気力線の描画
+実験4まででは、電荷が1つだけの場合について考えていた。その為電気力線は必ず線形(正電荷なら半直線、負電荷なら線分)となっていた。  
+実験5以降では、電荷が複数になった場合の電気力線を描画することを試みる。  
+但し、実験5では簡単に考えるため、電荷は2個とし、その強さも一定値で+16[C]とする。  
 
-### 2.4.1 実験4の手順
-[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField.m) をもとに、電場ベクトルではなく電場方向の単位ベクトルを求めるプログラム[unitElectricField.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField.m)を作った。
+### 2.5.1 実験4の手順
+(1) [unitElectricField.m](https://github.com/17ec084/grade2-2/blob/e41675c75b1e4d99bc245b9ade0db2b54aa69c62/electromagnetism/ElectricLinesOfForce/unitElectricField.m) をもとに、電荷の置かれた2点、電荷の符号、始点を受け取り、その電場方向の単位ベクトルを求めるプログラム[unitElectricField2.m](.m)を作った。  
+
+```MATLAB
+
+```
+
+(2) [plotEV.m](.m) について、  
+unitElectricField関数を呼び出す記述をunitElectricField2関数を呼び出す記述に書き換えた。  
+
+また、[plotEV.m](.m)と [plotEL1.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/plotEL1.m) について、電荷の座標を増やしたが、(1)でベクトルとして各座標成分を受け取ることにしたため、このことに応じて引数を増やしたり変更したりするなどの必要はなかった。  
+
+
 
 <!--
 今後の実験予定
 〇2.1を3Dプロットする(2.2)
 〇2.2で電場ベクトルの大きさが極端に小さくなってしまうから、大きさを固定(2.3)
-・電荷が複数ある場合(２つ。)(2.4、2.5)
+・負電荷に対応。電気力線(点ではないので注意)が電荷に重なった場合そこで電気力線を止める必要あり(2.4)
+・電荷が複数ある場合(２つ。)(2.5、2.6)
 ・・電気力線が曲線になることの確認
 ・・置き方によっては電気力線が線形で、しかし振動する。プログラムが止まらない→他の電荷に対してまっすぐな線を描画しない工夫
 ・電荷が複数ある場合(3次元行列を領域に見立てて電荷を書いておいたものを読み取る場合)
