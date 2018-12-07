@@ -138,7 +138,7 @@ z=z+c+dz;
 で電場ベクトルの始点を点Dに移動し、 `plot3(x,y,z)` でその電場ベクトルを描画するものである。  
 また、関数自体の戻り値は、始点を点Dに移動したときの電場ベクトルの終点座標である。  
 
-(3)(4)次のようなMatLab関数[plotEL1.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/plotEL1.m)を作成した。  
+(3)(4)次のようなMatLab関数[plotEL1.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/plotEL1.m)を作成した。  
 
 ```
 function plotEL1( a,b,c, dx,dy,dz)
