@@ -553,18 +553,66 @@ c=[0,0];
 
 (3)
 [plotEV.m](https://github.com/17ec084/grade2-2/blob/b424df54ed34c70fb81c15886baeb1fc4f125ded/electromagnetism/ElectricLinesOfForce/plotEV.m) をもとに、  
-unitElectricField関数を呼び出す仕様からunitElectricField2関数を呼び出す仕様に書き換えたmファイル[plotEV2.m]()を作った。。  
-また、
+unitElectricField関数を呼び出す仕様からunitElectricField2関数を呼び出す仕様に書き換えたmファイル[plotEV2.m](https://github.com/17ec084/grade2-2/blob/52d467842e23b63771e252e4502f5697e8bd823e/electromagnetism/ElectricLinesOfForce/plotEV2.m)を作った。  
+```MATLAB
+function [endX,endY,endZ]=plotEV2( a,b,c, dx,dy,dz)
+%plotEV2 点Aが作る電場ベクトルを点Dからプロットする
+%   点A(a,b,c)、点D(a+dx,b+dy,c+dz)
+%   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
 
-<!--
-x=a+dx
-y=b+dy
-z=c+dZ
-の部分を変更した。
+%点Aと点Dが重なってしまうと方向が決まらないのでエラーを返す。
+if [dx,dy,dz]==[0,0,0]
+ fprintf("plotEV2メソッド実行中にエラー。電荷の存在する座標から出発することはできない。\n");
+ return
+end
 
--->
 
-また、[plotEV.m](.m)と [plotEL1.m](https://github.com/17ec084/grade2-2/blob/96adb7e4543562fb58701f2d5ab23abdfc28660d/electromagnetism/ElectricLinesOfForce/plotEL1.m) について、電荷の座標を増やしたが、(1)でベクトルとして各座標成分を受け取ることにしたため、このことに応じて引数を増やしたり変更したりするなどの必要はなかった。  
+x=a(1)+dx; %実験5(3)で変更
+y=b(1)+dy; %実験5(3)で変更
+z=c(1)+dz; %実験5(3)で変更
+
+%電場ベクトル(の大きさlengthOfEと単位ベクトルunitOfE)を求める
+[Ex,Ey,Ez]=unitElectricField2( a,b,c, x,y,z ); %実験5(3)で変更
+%lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
+%unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
+
+if isnan(Ex)==true
+%負電荷によって電気力線が収束しきった場合
+ endX=NaN;
+ endY=NaN;
+ endZ=NaN;
+else
+ x=[0,Ex];
+ y=[0,Ey];
+ z=[0,Ez];
+ x=x+a(1)+dx; %実験5(3)で変更
+ y=y+b(1)+dy; %実験5(3)で変更
+ z=z+c(1)+dz; %実験5(3)で変更
+ %電場ベクトルの終点
+ endX=Ex+a(1)+dx; %実験5(3)で変更
+ endY=Ey+b(1)+dy; %実験5(3)で変更
+ endZ=Ez+c(1)+dz; %実験5(3)で変更
+ %電場ベクトルを描画
+ plot3(x,y,z);
+end
+
+
+
+
+
+end
+
+
+
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -572,7 +620,7 @@ z=c+dZ
 今後の実験予定
 〇2.1を3Dプロットする(2.2)
 〇2.2で電場ベクトルの大きさが極端に小さくなってしまうから、大きさを固定(2.3)
-・負電荷に対応。電気力線(点ではないので注意)が電荷に重なった場合そこで電気力線を止める必要あり(2.4)
+〇負電荷に対応。電気力線(点ではないので注意)が電荷に重なった場合そこで電気力線を止める必要あり(2.4)
 ・電荷が複数ある場合(２つ。)(2.5、2.6)
 ・・電気力線が曲線になることの確認
 ・・置き方によっては電気力線が線形で、しかし振動する。プログラムが止まらない→他の電荷に対してまっすぐな線を描画しない工夫
