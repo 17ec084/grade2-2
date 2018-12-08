@@ -9,6 +9,8 @@ function [i,j,k] = unitElectricField2( a,b,c,x,y,z )
 %=EA1の4πε/Q倍
 %=(((x-a(1))^2+(y-b(1))^2+(z-c(1))^2)^-1.5)(x-a(1),y-b(1),z-c(1))
 %=scalar1*(x-a(1),y-b(1),z-c(1))
+
+
 scalar1=(((x-a(1))^2+(y-b(1))^2+(z-c(1))^2)^-1.5);
 E1=[scalar1*(x-a(1)),scalar1*(y-b(1)),scalar1*(z-c(1))];
 
@@ -61,14 +63,40 @@ for p=[1:2]
     isTouchTheta=(abs(thetaOfLP(1)-thetaOfE(1))<=r);
     isTouchPhi=(abs(phiOfLP(1)-phiOfE(1))<=r);    
     
+    if isnan(thetaOfLP) && isnan(thetaOfE)
+    %thetaOf～がどちらもNaN即ち不定形の逆正接であったとき
+        %成分の大きさが無限大ということはあり得ない以上、
+        %不定形は0/0によって生じたといえる。
+        %0==0なので、isTouchThetaはtrueとしてよい。
+        isTouchTheta=true;
+    end
+    
+    if isnan(thetaOfLP) && isnan(thetaOfE)
+    %phiOf～についても同じ。
+        isTouchPhi=true;        
+    end
+    
     if (isTouchTheta) && (isTouchPhi)
-    %電場ベクトルが電荷に重なりうる方向である場合
-        if abs(LP(1))<abs(E(1))
-        %電場ベクトルのほうが長いなら
-            i=NaN;
-            j=0;
-            k=0;
-        return;
+    %電場ベクトルが電荷に重なりうる方向である場合で、
+        if ...
+        ( ...
+            abs(LP(1))<=abs(E(1))...
+            && ...
+            abs(LP(2))<=abs(E(2))...
+        ) ...
+        && ...
+        ( ...
+            abs(LP(3))<=abs(E(3)) ...
+        ) ...
+        %なおかつ電場ベクトルのほうが長い場合、
+            if a(p+2)<0
+            %着目電荷が負電荷であれば
+                %重なったと判断する
+                i=NaN;
+                j=0;
+                k=0;
+            return;
+            end
         end
     end
     
