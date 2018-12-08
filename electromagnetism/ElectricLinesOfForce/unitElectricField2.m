@@ -38,27 +38,37 @@ absOfE=( (E(1))^2 +(E(2))^2 +(E(3))^2 )^0.5;
 E=E/absOfE;
 
 %電場ベクトルが電荷とぶつかるかどうか
-%=電場ベクトルの成分比と、任意の電荷の座標(l,m,n)と今の座標(x,y,z)との間の位置関係の成分比が一致(誤差率r以内)し、かつ前者のほうが大きい
-r=0.001;
+%=電場ベクトルのxy角度θ、yz角度φと、任意の電荷の座標L(l,m,n)と今の座標P(x,y,z)との間の位置関係の角度θ、φが一致(誤差r[rad]以内)し、かつ前者のほうが大きい
+r=0.1;
 for p=[1:2]
     l=a(p);
     m=b(p);
     n=c(p);
-    if ((l-x)/(m-y)-E(1)/E(2))/(E(1)/E(2))<r
-    %x,y比が一致する場合
-        if ((m-y)/(n-z)-E(2)/E(3))/(E(2)/E(3))<r
-        %y,z比が一致する場合
-            if ((l-x)/(n-z)-E(1)/E(3))/(E(1)/E(3))<r
-            %x,z比が一致する場合
-                if (l-x)<E(1)
-                %電場ベクトルのほうが大きい場合
-                    %電場ベクトルと電荷がぶつかるといえる
-                    i=NaN;
-                    j=0;
-                    k=0;
-                    return
-                end
-            end
+    
+    %着目電荷Lと電場ベクトルの始点Pとを結ぶ線分LP
+    LP=[x-l,y-m,z-n];
+    
+    %線分LPの角度θを区間[-π/2,π/2]の範囲で求める
+    thetaOfLP=atan(LP(2)/LP(1));
+    %線分LPの角度φを区間[-π/2,π/2]の範囲で求める
+    phiOfLP=atan(LP(3)/LP(2));
+    
+    %電場ベクトルEに対しても同じことをする
+    thetaOfE=atan(E(2)/E(1));
+    phiOfE=atan(E(3)/E(2));
+    
+    %φとθそれぞれの誤差[rad]がr未満であるか調べる
+    isTouchTheta=(abs(thetaOfLP(1)-thetaOfE(1))<=r);
+    isTouchPhi=(abs(phiOfLP(1)-phiOfE(1))<=r);    
+    
+    if (isTouchTheta) && (isTouchPhi)
+    %電場ベクトルが電荷に重なりうる方向である場合
+        if abs(LP(1))<abs(E(1))
+        %電場ベクトルのほうが長いなら
+            i=NaN;
+            j=0;
+            k=0;
+        return;
         end
     end
     
