@@ -634,13 +634,13 @@ end
 したがって、結果は妥当である。  
 
 また(3)(4)を行い、次のようにコマンドラインに入力した結果、図2.5.2.1のようなグラフが得られた。但しこの図は得られたグラフに軸の名前を付け、3D回転を加え、補助線などを後から加筆したものである。
-![](https://github.com/17ec084/grade2-2/blob/68494fde01bc94dd59d26f287e49f200d3d31d7a/electromagnetism/data/2521_2.png)  
+![](https://github.com/17ec084/grade2-2/blob/9486e7e910bd67425cd67b78c74cdedfe266f339/electromagnetism/data/2521_2.png)  
 図2.5.2.1 実験5でplotEL1_2([0,0,-1,-1],[0,0],[0,2.1], 5,0,1)した結果(xz平面)  
 この結果を、参考資料[1]による電界(電場)のシミュレート(図2.5.2.2)と比較すると、実験5では電場ベクトルの長さを固定したためにシミュレートと比較して角張ってしまっていることがわかる。しかし、その事実を除けば、図2.5.2.3からもわかる通り、ほぼ正確に電気力線を引くことができたといえる。  
-![](https://github.com/17ec084/grade2-2/blob/68494fde01bc94dd59d26f287e49f200d3d31d7a/electromagnetism/data/2522.png)  
+![](https://github.com/17ec084/grade2-2/blob/9486e7e910bd67425cd67b78c74cdedfe266f339/electromagnetism/data/2522.png)  
 図2.5.2.2 (0,0,0)と(0,0,2.1)に負電荷を置き、(5,0,1)から電気力線を引くシミュレーション  
   
-![](https://github.com/17ec084/grade2-2/blob/68494fde01bc94dd59d26f287e49f200d3d31d7a/electromagnetism/data/2522_2.png)  
+![](https://github.com/17ec084/grade2-2/blob/9486e7e910bd67425cd67b78c74cdedfe266f339/electromagnetism/data/2522_2.png)  
 図2.5.2.3 図2.5.2.1と図2.5.2.2を重ね合わせて比較した図
 
 
