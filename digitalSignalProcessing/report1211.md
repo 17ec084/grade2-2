@@ -2,8 +2,8 @@
 17ec084平田智剛
 
 ## 1.使用機器、ソフト
-・Raspberry Pi2 (ラズパイ)
-・Windows 10 Pro(パソコン)
+・Raspberry Pi2 (ラズパイ)  
+・Windows 10 Pro(パソコン)  
 ・VNC Viewer(リモートデスクトップソフト、VNC)
 
 ## 2.講義で行ったこと
