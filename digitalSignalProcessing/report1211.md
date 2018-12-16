@@ -62,6 +62,77 @@ long double型変数 f はvalに与える波形の、(基音の)周波数であ�
     
 wavファイルを再生できるプログラム(alsa_play.c)について、出力すべき音声の波形の瞬時値を表す変数はval0、val1で、それぞれ左音声と右音声に対応する。しかし、今回は議論を簡単にするため、val1=val0を随時代入する、即ちモノラルとすることにする。  
 
+①まず階名情報を更新する頻度を決定する。今回はバッファのサンプル数が満たされるタイミングで階名情報を計算することとする。  
+alsa_play.cでは、デフォルトでのサンプリングレートが44100回/secでバッファ数が1024であるため、  
+44100/1024≒43.07回/secとなる。  
+プログラムには次のように加筆する。  
+
+```C
+long double FouriersPerSec = (double)SamplesPerSec/(double)BUF_SAMPLES;
+```
+  
+②フーリエ変換する。  
+val0のフーリエ変換Fval0を求めよう。  
+フーリエ変換の式は  
+
+となる。  
+今回の場合、t=0～(1.0/FouriersPerSec)の間だけval0が読み込まれ、それ以外の場合常にval0=0であると考えてよいだろう。  
+さらにf(t)=val0[t×SamplesPerSec]とすると  
+
+とかける。  
+区分求積法を用いると  
+
+となる。  
+ここでn=BUF_SAMPLESとすると、  
+
+のように書けて、val0のインデックスが整数になる。  
+次に、  
+
+について考えよう。(http://www.ice.tohtech.ac.jp/~nakagawa/fourier/dft1.htm)  
+オイラーの公式を用いれば  
+
+
+となる。  
+このことより、  
+
+を計算した結果について、実部はcosによって、虚部はsinによって表される周波数成分となる。(http://www.ice.gunma-ct.ac.jp/~tsurumi/courses/ImagePro/No7_1.pdf)  
+複素数Cを実数R倍したものは、Cの実部と虚部それぞれをR倍したものと同じなので、  
+
+
+と書くことができる。  
+
+よって、val[0]からval[BUF_SAMPLES-1]の間に周波数がfである成分が相対的にどれくらい含まれているかを調べる場合、  
+
+
+を計算すればよい。(相対的な議論で構わないため、不要な定数は省略した。)  
+これを周波数で積分すると  
+
+従って、周波数がfMAXからfMINの間である成分の大きさは  
+
+である。
+
+
+以上の議論より、周波数がfMAXからfMINの間である成分の大きさは以下のような関数getPowerByFreqで計算できる。
+
+```C
+long double getPowerByFreq(long double fMAX, long double fMIN)
+{
+    long double power=0;
+    for(int t=0; t<BUF_SAMPLES; t++)
+    {
+        power+=val0[t]*(sin(6.283185307*fMAX*t/SamplesPerSec)-sin(6.283185307*fMIN*t/SamplesPerSec) +cos(6.283185307*fMAX*t/SamplesPerSec)-cos(6.283185307*fMIN*t/SamplesPerSec));
+    }
+    return power;
+}
+```
+後は各音階付近にfMAX,fMINを適用し、その比率から音階を判定すればよい。和音などは統計学における分散などを用いれば判断できるだろう。  
+あとはこのfMAX,fMINをどのように設定するかが課題となる。
+
+
+
+
+
+
 
 
 
