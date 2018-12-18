@@ -66,7 +66,7 @@ def main():
     # Set up a neural network to train
     # Classifier reports softmax cross entropy loss and accuracy at every
     # iteration, which will be used by the PrintReport extension below.
-    model = L.Classifier(MLP(args.unit, 2))
+    model = L.Classifier(MLP(args.unit, 10))
     if args.gpu >= 0:
         # Make a specified GPU current
         chainer.cuda.get_device_from_id(args.gpu).use()
