@@ -1,6 +1,6 @@
 import cv2
 
-face_cascade = cv2.CascadeClassifier("/opt/Wolfram/WolframEngine/11.3/SystemFiles/Data/Haarcascades/frontalface.xml")
+face_cascade = cv2.CascadeClassifier("frontalface.xml")
 
 img = cv2.imread("Lenna.jpg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
