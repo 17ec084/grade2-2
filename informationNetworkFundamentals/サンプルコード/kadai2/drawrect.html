@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="SIFT-JIS">
+<title>HTML5ƒTƒ“ƒvƒ‹</title>
+</head>
+<body>
+<canvas id="canvassample1" width="140" height="140"></canvas>
+</body>
+</html>
+
+<script type="text/javascript">
+ onload = function() {
+   draw1();
+ };
+ function draw1() {
+  var canvas = document.getElementById('canvassample1');
+  if ( ! canvas || ! canvas.getContext ) {
+    return false;
+  }
+  var ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.moveTo(20, 20);
+  ctx.lineTo(120, 20);
+  ctx.lineTo(120, 120);
+  ctx.lineTo(20, 120);
+  ctx.closePath();
+  ctx.stroke();
+ }
+</script>

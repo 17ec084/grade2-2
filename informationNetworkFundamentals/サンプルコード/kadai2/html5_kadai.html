@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="SHIFT-JIS">
+<title>HTML5を試してみよう</title>
+</head>
+<body>
+
+<p>課題１：</p>
+
+<img src="image01.jpg">
+
+<p>課題２：</p>
+
+<video src="flog01.webm"></video>
+
+<p>課題３：</p>
+
+<canvas id="canvassample1" width="140" height="140"></canvas>
+
+<script type="text/javascript">
+ onload = function() {
+   draw1();
+ };
+ function draw1() {
+  var canvas = document.getElementById('canvassample1');
+  if ( ! canvas || ! canvas.getContext ) {
+    return false;
+  }
+  var ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.moveTo(20, 20);
+  ctx.lineTo(120, 20);
+  ctx.lineTo(120, 120);
+  ctx.lineTo(20, 120);
+  ctx.closePath();
+  ctx.stroke();
+ }
+</script>
+<br>
+学籍番号：17ec084　<BR>
+氏名：平田智剛　<BR>
+
+</body>
+</html>
