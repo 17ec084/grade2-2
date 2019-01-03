@@ -1,0 +1,18 @@
+%  ƒ³ƒ¿ƒÀ‚Ì‘Š‘Î“I‚Èo‚â‚·‚³‚ğr‚ÆƒÆ‚Å‹‚ß‚éB
+
+%  rnd1=r
+%  rnd2=ƒÆ
+
+clear;
+y(1572)=0;
+x=linspace(0,pi,1572);
+for i=[1:10000000]
+rnd1=rand();
+rnd2=rand();
+n=uint64(500*acos(((rnd1.*cos(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(sin(2*pi*rnd2)).^2))));
+y(n+1)=y(n+1)+1;
+end
+plot(x,y)
+rnd1=rand();
+rnd2=rand();
+
