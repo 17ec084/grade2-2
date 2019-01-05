@@ -135,6 +135,8 @@ else
     γ成分をtan(2*acos(((rnd1.*sin(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(cos(2*pi*rnd2)).^2))))
     とするベクトルの方向に一致する。
     %}
+    rnd1=rand();
+    rnd2=rand();
     E=unitAlpha.*tan(2*acos(((rnd1.*cos(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(sin(2*pi*rnd2)).^2))));
     E=E+unitBeta.*(-1);
     E=E+unitGamma.*tan(2*acos(((rnd1.*sin(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(cos(2*pi*rnd2)).^2))));
