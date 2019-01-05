@@ -1,7 +1,9 @@
-function [endX,endY,endZ]=plotEV2( a,b,c, dx,dy,dz)
+function [endX,endY,endZ]=plotEV2( a,b,c, dx,dy,dz, N)
 %plotEV2 点Aが作る電場ベクトルを点Dからプロットする
 %   点A(a,b,c)、点D(a+dx,b+dy,c+dz)
 %   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
+%   NはunitElectricField2に渡すためのものである。
+%   Nについての説明はunitElectricField2における説明を参照せよ。
 
 %点Aと点Dが重なってしまうと方向が決まらないのでエラーを返す。
 if [dx,dy,dz]==[0,0,0]
@@ -15,7 +17,7 @@ y=b(1)+dy;
 z=c(1)+dz;
 
 %電場ベクトル(の大きさlengthOfEと単位ベクトルunitOfE)を求める
-[Ex,Ey,Ez]=unitElectricField2( a,b,c, x,y,z );
+[Ex,Ey,Ez]=unitElectricField2( a,b,c, x,y,z, N );
 %lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
 %unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
 
