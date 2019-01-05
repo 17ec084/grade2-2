@@ -837,6 +837,8 @@ end
 %実験7で加筆ここまで
 ```
 
+また、[plotEV2.m](https://github.com/17ec084/grade2-2/blob/d253c41cc606884cf2a74de94cd63b91646b2c4e/electromagnetism/ElectricLinesOfForce/plotEV2.m)、[plotEL1_2.m](https://github.com/17ec084/grade2-2/blob/d253c41cc606884cf2a74de94cd63b91646b2c4e/electromagnetism/ElectricLinesOfForce/plotEL1_2.m)も、引数Nを受け取ってunitElectricField2に渡すように書き換えた。
+
 ### 2.7.2 実験7の結果
 (1)  
 図2.7.1.1をα方向から観測すると図2.7.2.1のようになる。  
