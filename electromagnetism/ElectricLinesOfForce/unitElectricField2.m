@@ -1,9 +1,15 @@
-function [i,j,k] = unitElectricField2( a,b,c,x,y,z )
+function [i,j,k] = unitElectricField2( a,b,c,x,y,z,N )
 %unitElectricField2 点A1と点A2が点Pに作る電場ベクトルを求める。但し大きさは1になるように強制的に拡大縮小する
 %   点A1(a(1),b(1),c(1))、点A2(a(2),b(2),c(2))、点P(x,y,z)
 %   bとcは長さ2のベクトル、aは長さ4のベクトルである必要がある。
 %   a(3)は点A1の電荷の符号を意味する。+なら1を、-なら-1を格納すること。
 %   a(4)は点A2の電荷の符号を意味する。+なら1を、-なら-1を格納すること。
+%   また、abs(N)回に1回、
+%   Nが正なら反射が、
+%   Nが負なら消滅が起こる。
+%   Nが0なら何も起こらない
+
+%Nは実験7で追加された。
 
 %E1
 %=EA1の4πε/Q倍
@@ -22,7 +28,7 @@ scalar2=(((x-a(2))^2+(y-b(2))^2+(z-c(2))^2)^-1.5);
 E2=[scalar2*(x-a(2)),scalar2*(y-b(2)),scalar2*(z-c(2))];
 
 if ((a(3))^2~=1)||((a(4))^2~=1)
- fprintf("unitElectricField2関数の実行中にエラー。unitElectricField2関数の説明をよく読むこと。\n")
+ fprintf("unitElectricField2関数の引数ベクトルaまたはbにエラー。unitElectricField2関数の説明をよく読むこと。\n")
  i=NaN;
  j=0;
  k=0;
@@ -47,6 +53,101 @@ absOfE=( (E(1))^2 +(E(2))^2 +(E(3))^2 )^0.5;
 
 %Eを単位ベクトルにする
 E=E/absOfE;
+
+%実験7で加筆ここから
+
+if(N<=-1)
+%Nが-1以下なら、-N回に1回の割合で電気力線を途絶えさせる
+    if(rand()*(-N)>(-N-1))
+       i=NaN;
+       j=0;
+       k=0;
+       return;
+   end 
+elseif(-1<N && N<1)
+%-1<N<1なら
+    if(N~=0)
+    %Nが0でないなら
+        fprintf("unitElectricField2関数の引数Nにエラー。unitElectricField2関数の説明をよく読むこと。\n")
+        i=NaN;
+        j=0;
+        k=0;
+        return
+    else
+    %N==0なら
+        %何もしない
+    end
+else
+%Nが1以上なら、N回に1回の割合で電気力線を反射させる
+    %{
+    αβγ空間を考え、
+    電気力線の進行方向を-β方向としたとき、
+    α方向へ向かう角度は
+    2*acos(((rnd1.*cos(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(sin(2*pi*rnd2)).^2)))で求められる。
+    γ方向へ向かう角度は
+    2*acos(((rnd1.*sin(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(cos(2*pi*rnd2)).^2)))で求められる。
+
+    β方向の単位ベクトルは必ず-Eである。
+    また、α方向を次のように定めることにする。
+    ･y成分及びz成分が-Eのものと同じである
+    ･β方向に垂直である
+    このように決めることで、α方向が一意に定まる。
+    γ方向については、α方向の単位ベクトルとβ方向の単位ベクトルの外積により定められる方向とする。
+    %}
+    
+    %まず、β方向の単位ベクトルunitBetaを定める。
+    unitBeta=-E;
+    
+    %次に、α方向の単位ベクトルunitAlphaを定める。
+    unitAlpha=[NaN,unitBeta(2),unitBeta(3)];
+    %unitAlpha(1)は、unitAlpha･unitBeta=0となるように定まる。
+    unitAlpha(1)=-(unitBeta(2)*unitBeta(2)+unitBeta(3)*unitBeta(3))/unitBeta(1);
+    
+    if(unitBeta(1)==0)
+    %{
+    しかし、unitBeta(1)が0であった場合、unitAlphaを定めることができないため、
+    α方向の定義を
+    ･x成分及びz成分が-Eのものと同じである
+    ･β方向に垂直である
+    に変更する
+    %}
+        unitAlpha=[0,NaN,unitBeta(3)];
+        %unitAlpha(2)は、unitAlpha･unitBeta=0となるように定まる。
+        unitAlpha(2)=-(unitBeta(1)*unitBeta(1)+unitBeta(3)*unitBeta(3))/unitBeta(2);       
+        
+        if(unitBeta(2)==0)
+        %unitBeta(1)もunitBeta(2)も0である場合については、例えば
+        unitAlpha=[1,0,0];
+        %が必ずβに垂直になるため、これをα方向の単位ベクトルとしてしまってよい。
+        end
+    end
+    
+    %unitAlphaを単位ベクトルにする。
+    unitAlpha=unitAlpha./sqrt(unitAlpha(1)^2+unitAlpha(2)^2+unitAlpha(3)^2);
+    %γ方向の単位ベクトルunitGamma=unitAlpha×unitBetaを求める
+    unitGamma=cross(unitAlpha,unitBeta);
+    
+    %{
+    続いて、反射後の電場ベクトルを求め、Eに上書きする。
+    反射後の電場ベクトルの方向は
+    α成分をtan(2*acos(((rnd1.*cos(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(sin(2*pi*rnd2)).^2)))),
+    β成分を-1,
+    γ成分をtan(2*acos(((rnd1.*sin(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(cos(2*pi*rnd2)).^2))))
+    とするベクトルの方向に一致する。
+    %}
+    E=unitAlpha.*tan(2*acos(((rnd1.*cos(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(sin(2*pi*rnd2)).^2))));
+    E=E+unitBeta.*(-1);
+    E=E+unitGamma.*tan(2*acos(((rnd1.*sin(2*pi*rnd2))./sqrt(1./(4.*(1-(rnd1.^2)))-(rnd1.^2).*(cos(2*pi*rnd2)).^2))));
+    
+    %Eの大きさ
+    absOfE=( (E(1))^2 +(E(2))^2 +(E(3))^2 )^0.5;
+
+    %Eを単位ベクトルにする
+    E=E/absOfE;
+    
+end
+%実験7で加筆ここまで
+
 
 %電場ベクトルが電荷とぶつかるかどうか
 %=電場ベクトルのxy角度θ、yz角度φと、任意の電荷の座標L(l,m,n)と今の座標P(x,y,z)との間の位置関係の角度θ、φが一致(誤差r[rad]以内)し、かつ前者のほうが大きい
