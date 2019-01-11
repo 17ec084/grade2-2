@@ -1022,7 +1022,7 @@ z=5;
 
 すると、E=(0.015119,0.008463,0.016883)が得られた。  
 妥当性を検証しよう。  
-![https://github.com/17ec084/grade2-2/blob/a1042da3dfd5ac1b26ec585c533810077b799af9/electromagnetism/data/8_2.png]()  
+![](https://github.com/17ec084/grade2-2/blob/a1042da3dfd5ac1b26ec585c533810077b799af9/electromagnetism/data/8_2.png)  
 
 ## 2.9 実験9 電荷が無数にある場合(2/3)―電場ベクトルが電荷とぶつかかることの判定  
 電気力線が負電荷に到達した場合、実際にはそこが電気力線の終点となる。  
@@ -1136,6 +1136,11 @@ z=-5;
 
 妥当性を検証しよう。  
 ![](https://github.com/17ec084/grade2-2/blob/660bb3d3a162aec36ae44492ddfe2792e39020eb/electromagnetism/data/9_2.png)
+
+## 2.10 実験10 電荷が無数にある場合(3/3)―関数の作成  
+実験10では、実験8および実験9で作ったプログラムを関数unitElectricField3.mに組み込む。  
+また、unitElectricField3関数を用いて電気力線を描画する実験も行う。
+
 
 <!--
 (2/3)では電場ベクトルが電荷とぶつかるかどうかの判断をするプログラムを作る。
