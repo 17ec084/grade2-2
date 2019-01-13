@@ -1,4 +1,4 @@
-function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N )
+function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isFirst )
 %unitElectricField3 Mによって定められる電荷が点Pに作る電場ベクトルを求める。但し大きさは1になるように強制的に拡大縮小する
 %   点P(x,y,z)
 %   Mは3次元行列である必要があり、xの範囲はxmin～xmaxである。
@@ -6,10 +6,12 @@ function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zM
 %   Nが正なら反射が、
 %   Nが負なら消滅が起こる。
 %   Nが0なら何も起こらない
+%   isFirstはplotEV3が使用する。通常はfalseを入れておけばよい。
 
 %まず、行列M内に0でない値がいくつ格納されているか調べる。
 %この個数cntが電荷の数である。
 %同時にそれぞれの電荷の情報を行列Qに格納する。
+
 cnt=0;
 [Mi,Mj,Mk]=size(M);
 for M_i=[1:Mi]
@@ -23,6 +25,14 @@ for M_i=[1:Mi]
                 Q(cnt,3)=((M_j-1)*(yMax-yMin)/(szY-1))+yMin;
                 Q(cnt,4)=((M_k-1)*(zMax-zMin)/(szZ-1))+zMin;
                 %(*ここまで)
+                
+                %plotEV3で電気力線を描画するときに、始点が電荷に衝突していた場合にアラートする。
+                if isFirst
+                    if ((Q(cnt,2)==x)&&(Q(cnt,3)==y))&&(Q(cnt,4)==z)
+                        fprintf("plotEV3メソッド実行中にエラー。電荷の存在する座標から出発することはできない。\n");
+                        return;
+                    end
+                end
             end
         end
     end
