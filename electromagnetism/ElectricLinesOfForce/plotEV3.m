@@ -1,6 +1,6 @@
 function [endX,endY,endZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N)
-%plotEV2 Mによって定められる電荷が作る電場ベクトルを点Pからプロットする
-%   点D(x,y,z)
+%plotEV3 Mによって定められる電荷が作る電場ベクトルを点Pからプロットする
+%   点P(x,y,z)
 %   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
 %   NはunitElectricField3に渡すためのものである。
 %   Nについての説明はunitElectricField3における説明を参照せよ。
