@@ -1142,7 +1142,7 @@ z=-5;
 また、unitElectricField3関数を用いて電気力線全体を描画する実験も行う。  
 
 ### 2.10.1 実験10の手順
-(1)次のような関数[unitElectricField3.m](https://github.com/17ec084/grade2-2/blob/master/electromagnetism/ElectricLinesOfForce/unitElectricField3.m)を作った。
+(1)次のような関数[unitElectricField3.m](https://github.com/17ec084/grade2-2/blob/16ad29f1459048e7d203b344560dcb50e1d3731a/electromagnetism/ElectricLinesOfForce/unitElectricField3.m)を作った。
 
 ```Matlab
 function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N )
@@ -1365,6 +1365,291 @@ k=E(3);
 
 end
 ```
+(2)[plotEV3.m](https://github.com/17ec084/grade2-2/blob/caed04c8a3faa77b88b44f1f087a9a279d919a7f/electromagnetism/ElectricLinesOfForce/plotEV3.m)を作成した。次の通り。
+```matlab
+function [endX,endY,endZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N)
+%plotEV3 Mによって定められる電荷が作る電場ベクトルを点Pからプロットする
+%   点P(x,y,z)
+%   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
+%   NはunitElectricField3に渡すためのものである。
+%   Nについての説明はunitElectricField3における説明を参照せよ。
+
+
+%電場ベクトル(の大きさlengthOfEと単位ベクトルunitOfE)を求める
+[Ex,Ey,Ez]=unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N);
+%lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
+%unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
+
+if isnan(Ex)==true
+%負電荷によって電気力線が収束しきった場合
+ endX=NaN;
+ endY=NaN;
+ endZ=NaN;
+else
+ px=[0,Ex];
+ py=[0,Ey];
+ pz=[0,Ez];
+ px=px+x;
+ py=py+y;
+ pz=pz+z;
+ %電場ベクトルの終点
+ endX=Ex+x;
+ endY=Ey+y;
+ endZ=Ez+z;
+ %電場ベクトルを描画
+ plot3(px,py,pz);
+end
+
+
+
+
+
+end
+```  
+
+(3)[plotEL1_3.m](https://github.com/17ec084/grade2-2/blob/7aeff3f14a0614b248d5413bf80cb3b8e21bd1b5/electromagnetism/ElectricLinesOfForce/plotEL1_3.m)を作成した。次の通り。  
+```matlab
+function plotEL1_3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N )
+%   plotEL1_3 Mが作る電気力線を点Pからプロットする
+%   点P(x,y,z)
+%   NはunitElectricField3に渡すためのものである。
+%   Nについての説明はunitElectricField3における説明を参照せよ。
+
+%まず、一番最初のプロットをやってしまう。
+%左辺については後述の※のため。
+[startX,startY,startZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N );
+fprintf("最初、(%f,%f,%f)\n",startX,startY,startZ);
+if(isnan(startX)==true)
+ return
+else
+ %次に、(可動正電荷、電気力線が)描画すべき空間を飛び出る(isEVInArea==falseとなる)
+ %まで繰り返す。
+ isEVInArea=(startX^2<100^2)*(startY^2<100^2)*(startZ^2<100^2);
+ while isEVInArea==true
+ %始点を「直前に作った電場ベクトルの終点」とするような電場ベクトルを追加描画。...※
+ %左辺は、次のタイミングでの※のため。
+ [startX,startY,startZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,startX,startY,startZ,N );
+ fprintf("(%f,%f,%f)\n",startX,startY,startZ);
+ isEVInArea=(startX^2<100^2)*(startY^2<100^2)*(startZ^2<100^2);
+ end
+end
+
+end
+```  
+
+(4)  
+2.10.2項に示した実験10(3)の結果に示したことから、(4)では次のような修正を加える実験を行った。  
+・plotEL1_3関数、plotEV3関数、unitElectricField3関数に、MのかわりにQを渡すことも出来るように修正する  
+(Mはインデックスを3次元空間座標に見立てた3次元行列であり、Qは電荷の座標3成分と電気量を格納する4次元行列である。  
+Mの大きさは空間の広さに従うが、Qの大きさは電荷の個数に従うため、電荷の数密度が大きくない限りはQのほうが遥かにコンパクトに電荷の情報を表現できる。)  
+・isEVInAreaの設定を適切にする  
+  
+[unitElectricField3.m](https://github.com/17ec084/grade2-2/blob/b3c8df53883146c2f466892cad8571ad334c0c25/electromagnetism/ElectricLinesOfForce/unitElectricField3.m)について、  
+・まず引数にisMQを追加した。  
+・処理の一番最初に `if isMQ==false` を追加した。  
+・次のコメント  
+```matlab
+    %{
+    以上の処理により、
+    num番目の電荷の電気量はQ(num,1)に、
+    num番目の電荷のｘ座標はQ(num,2)に、
+    num番目の電荷のｙ座標はQ(num,3)に、
+    num番目の電荷のｚ座標はQ(num,4)に、
+    それぞれ格納された
+    %}
+```
+のあとに、次のものを挿入した。  
+```matlab
+else
+%isMQがtrueなら
+    Q=M;
+    tmp=size(Q);
+    cnt=tmp(1);
+end
+```
+  
+また、[plotEV3.m](https://github.com/17ec084/grade2-2/blob/b3c8df53883146c2f466892cad8571ad334c0c25/electromagnetism/ElectricLinesOfForce/plotEV3.m)と[plotEL1_3.m](https://github.com/17ec084/grade2-2/blob/835399612f2f493ede72835331a498071c28c1df/electromagnetism/ElectricLinesOfForce/plotEL1_3.m)について、  
+引数isMQを受け取ってunitElectricField3.mに渡すように修正した。  
+  
+さらに、[plotEL1_3](https://github.com/17ec084/grade2-2/blob/835399612f2f493ede72835331a498071c28c1df/electromagnetism/ElectricLinesOfForce/plotEL1_3.m)については、  
+isEVInAreaを次のように変更した(2か所)。
+```matlab
+ isEVInArea= ...
+ ((xMin<=startX && startX<=xMax)&&(yMin<=startY && startY<=yMax)) ...
+ && ...   
+ (zMin<=startZ && startZ<=zMax);
+```  
+  
+最後に、次のような[M2Q.m](https://github.com/17ec084/grade2-2/blob/b3c8df53883146c2f466892cad8571ad334c0c25/electromagnetism/ElectricLinesOfForce/M2Q.m)を作成した。  
+これは、行列M及び座標の範囲を入力すると、行列Qを出力するプログラムである。
+```matlab
+function Q = M2Q( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,alert,x,y,z)
+%M2Q 3次元行列Mを3次元空間とみることによって定められる電荷の情報を、
+%   電荷の座標情報と電気量を格納する4次元行列Qに書き換えることでコンパクトに
+%   表現しなおす
+%   Mは3次元行列である必要があり、xの範囲はxmin～xmaxである。
+%   alertをtrueとすると、点(x,y,z)上に電荷が存在するか調べ、「そこでreturnする」
+%   もし存在した場合、エラーメッセージをfprintfする。
+%   この機能の用途は、点(x,y,z)を電気力線の始点にできるか否かを知ることである。
+
+    %まず、行列M内に0でない値がいくつ格納されているか調べる。
+    %この個数cntが電荷の数である。
+    %同時にそれぞれの電荷の情報を行列Qに格納する。
+
+    cnt=0;
+    [Mi,Mj,Mk]=size(M);
+    for M_i=[1:Mi]
+        for M_j=[1:Mj]
+            for M_k=[1:Mk]
+                if(M(M_i,M_j,M_k)~=0)
+                    cnt=cnt+1;
+                    %(*ここから)
+                    Q(cnt,1)=M(M_i,M_j,M_k);
+                    Q(cnt,2)=((M_i-1)*(xMax-xMin)/(szX-1))+xMin;
+                    Q(cnt,3)=((M_j-1)*(yMax-yMin)/(szY-1))+yMin;
+                    Q(cnt,4)=((M_k-1)*(zMax-zMin)/(szZ-1))+zMin;
+                    %(*ここまで)
+                
+                    if alert
+                        %始点が電荷に衝突していた場合にアラートする。
+                        if ((Q(cnt,2)==x)&&(Q(cnt,3)==y))&&(Q(cnt,4)==z)
+                            fprintf("M2Q(alert==true)メソッド実行中にエラー。電荷の存在する座標から出発することはできない。\n");
+                            return;
+                        end
+                    end
+                end
+            end
+        end
+    end
+    %{
+    以上の処理により、
+    num番目の電荷の電気量はQ(num,1)に、
+    num番目の電荷のｘ座標はQ(num,2)に、
+    num番目の電荷のｙ座標はQ(num,3)に、
+    num番目の電荷のｚ座標はQ(num,4)に、
+    それぞれ格納された
+    %}
+
+end
+```
+
+
+### 2.10.2 実験10の結果
+(1)
+  
+```matlab
+M(501,551,451)=1.7;
+M(46,451,1)=3;
+M(651,351,251)=-2.1;
+M(676,351,251)=100;
+```
+
+をコマンドラインに入力した後に、続けて次のように入力した。  
+
+```matlab
+[vx,vy,vz]=unitElectricField3(M, 1001, 1001, 1001, -10, 10, -10, 10, -10, 10, 2.5, -3, -5, 0);
+```
+
+すると、
+
+```matlab
+vx=-1.000000;
+vy=-0.000345;
+vz=-0.000236;
+```
+
+が得られた。2.9.2項に示した通り、この結果は妥当である。  
+
+(2)  
+  
+```matlab
+M(501,551,451)=1.7;
+M(46,451,1)=3;
+M(651,351,251)=-2.1;
+M(676,351,251)=100;
+```
+
+をコマンドラインに入力した後に、続けて次のように入力した。  
+```matlab
+plotEV3(M, 1001, 1001, 1001, -10, 10, -10, 10, -10, 10, 2.5, -3, -5, 0);
+```
+
+すると、図2.10.2.1のように2点(2.5,-3,-5)、(1.5,-3.003453,-5.002356)を結ぶ線分が得られた。  
+![](https://github.com/17ec084/grade2-2/blob/d4f54a7262fe14df75964d6d63ad490c5aa3403e/electromagnetism/data/10_1.png)  
+この線分は、(2.5,-3,-5)を始点にベクトル(-1,-0.003453,-0.002356)だけ進行したものであるということができる。  
+したがって、この結果は妥当である。  
+
+(3)
+  
+```matlab
+M(501,551,451)=1.7;
+M(46,451,1)=3;
+M(651,351,251)=-2.1;
+M(676,351,251)=100;
+```
+
+をコマンドラインに入力した後に、続けて次のように入力した。  
+```matlab
+plotEL1_3(M, 1001, 1001, 1001, -10, 10, -10, 10, -10, 10, 2.5, -3, -5, -100);
+```
+
+すると、10分ほど経過したのち、以下の点たちを結ぶ線分によって構成させる電気力線を得た。
+```
+(2.500000,-3.000000,-5.000000)
+(1.500000,-3.000345,-5.000236)
+(0.500002,-3.002076,-5.001392)
+(-0.499983,-3.006636,-5.004259)
+(-1.499934,-3.015358,-5.009065)
+(-2.499823,-3.029061,-5.014789)
+(中略)
+(-63.023197,-7.359934,0.922992)
+(-64.016597,-7.428381,1.015030)
+(-65.010002,-7.496809,1.107033)
+(-66.003412,-7.565218,1.199000)
+(-66.996825,-7.633610,1.290935)
+(NaN,NaN,NaN)
+```
+(これらの情報はプログラム中にfprintfを挿入することで得られた)    
+但し、(NaN,NaN,NaN)は領域外進出以外の原因で電気力線が途絶えたことを意味する。
+この結果を検証しよう。  
+まず、このプログラムの実行に10分という長時間を要した原因は、一つ一つの点を求める際に行列Mを読み込み、計算する必要があるからである。  
+また、点(NaN,NaN,NaN)は、plotEL1_3の最後の引数N=-100によって、100回に1回の確率で電気力線が強制停止することが発生したことを意味すると考えられる。  
+また、xMin,xMax,yMin,yMax,zMin,zMaxの設定より、すべての点の成分の絶対値は10以下でなければならないが、そのことを満たしていない。これは、plotEL1_3関数内で、着目している点が領域内にあるか領域外にあるか判断する変数isEVInAreaの設定を適切に行わなかったためである。  
+
+(4)  
+```matlab
+M(501,551,451)=1.7;
+M(46,451,1)=3;
+M(651,351,251)=-2.1;
+M(676,351,251)=100;
+```
+
+をコマンドラインに入力した後に、続けて次のように入力した。  
+```matlab
+Q=M2Q(M,1001,1001,1001,-10,10,-10,10,-10,10,true,33,-3,-5);
+```  
+続いて、次のように入力した。  
+```matlab
+plotEL1_3(Q,1001,1001,1001,-10,10,-10,10,-10,10,2.5,-3,-5,-100,true);
+```
+
+すると、数秒以内に図2.10.2.2のような結果を得た。  
+
+
+![](https://github.com/17ec084/grade2-2/blob/1056121bb88e8dfee402c4a1c3f3929752f98668/electromagnetism/data/21022.png)  
+図2.10.2.2 plotEL1_3(Q,1001,1001,1001,-10,10,-10,10,-10,10,2.5,-3,-5,-100,true)の結果
+
+# 3.今後の展望
+
+実験10までで、電荷の置かれた任意の3次元空間全体に電気力線を描画することが可能となった。これを利用して、  
+1.電荷の周りに放射状に電気力線の始点を設けて描画する  
+2.誘電率の変化によって、電気力線を合流させたり分流させたりする
+を行うと、次のことが可能になる。
+3.電気力線の密度から、各点ごとの電場を求めることができる。  
+4.線積分により、電圧が求められる。  
+
+
+
 
 
 <!--
@@ -1481,5 +1766,5 @@ function [phiAlphaBeta,phiGammaBeta] = getPhiByRnd(rnd)
 ・double型変数の精度限界(uint64の整数型に移行←10の冪を掛け算してケタをずらす必要あり)
 -->
 
-# n.参考資料
+# 4.参考資料
 [1]iOSアプリ「Verve」Hiroyuki KOBAYASHI氏開発 東京都立産業技術高等専門学校電気電子工学コース教材
