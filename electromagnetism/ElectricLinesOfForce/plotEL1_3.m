@@ -9,7 +9,7 @@ function plotEL1_3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isMQ )
 %まず、一番最初のプロットをやってしまう。
 %左辺については後述の※のため。
 [startX,startY,startZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isMQ );
-fprintf("最初、(%f,%f,%f)\n",startX,startY,startZ);
+%fprintf("最初、(%f,%f,%f)\n(%f,%f,%f)\n",x,y,z,startX,startY,startZ);
 if(isnan(startX)==true)
  return
 else
@@ -23,7 +23,7 @@ else
  %始点を「直前に作った電場ベクトルの終点」とするような電場ベクトルを追加描画。...※
  %左辺は、次のタイミングでの※のため。
  [startX,startY,startZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,startX,startY,startZ,N,isMQ );
- fprintf("(%f,%f,%f)\n",startX,startY,startZ);
+%fprintf("(%f,%f,%f)\n",startX,startY,startZ);
  isEVInArea= ...
  ((xMin<=startX && startX<=xMax)&&(yMin<=startY && startY<=yMax)) ...
  && ...   
