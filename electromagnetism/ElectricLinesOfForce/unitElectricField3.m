@@ -1,4 +1,4 @@
-function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N )
+function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isMQ )
 %unitElectricField3 Mによって定められる電荷が点Pに作る電場ベクトルを求める。但し大きさは1になるように強制的に拡大縮小する
 %   点P(x,y,z)
 %   Mは3次元行列である必要があり、xの範囲はxmin～xmaxである。
@@ -6,42 +6,60 @@ function [i,j,k] = unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zM
 %   Nが正なら反射が、
 %   Nが負なら消滅が起こる。
 %   Nが0なら何も起こらない
+%   isMQは、行列Mの代わりに行列Qが与えられている場合にtrueとする。(実験10(4)で追加)
 
-%まず、行列M内に0でない値がいくつ格納されているか調べる。
-%この個数cntが電荷の数である。
-%同時にそれぞれの電荷の情報を行列Qに格納する。
+%実験10(4)で追加ここから
 
-cnt=0;
-[Mi,Mj,Mk]=size(M);
-for M_i=[1:Mi]
-    for M_j=[1:Mj]
-        for M_k=[1:Mk]
-            if(M(M_i,M_j,M_k)~=0)
-                cnt=cnt+1;
-                %(*ここから)
-                Q(cnt,1)=M(M_i,M_j,M_k);
-                Q(cnt,2)=((M_i-1)*(xMax-xMin)/(szX-1))+xMin;
-                Q(cnt,3)=((M_j-1)*(yMax-yMin)/(szY-1))+yMin;
-                Q(cnt,4)=((M_k-1)*(zMax-zMin)/(szZ-1))+zMin;
-                %(*ここまで)
+%isMQがfalseなら
+if isMQ==false
+
+%実験10(4)で追加ここまで
+
+    %まず、行列M内に0でない値がいくつ格納されているか調べる。
+    %この個数cntが電荷の数である。
+    %同時にそれぞれの電荷の情報を行列Qに格納する。
+
+    cnt=0;
+    [Mi,Mj,Mk]=size(M);
+    for M_i=[1:Mi]
+        for M_j=[1:Mj]
+            for M_k=[1:Mk]
+                if(M(M_i,M_j,M_k)~=0)
+                    cnt=cnt+1;
+                    %(*ここから)
+                    Q(cnt,1)=M(M_i,M_j,M_k);
+                    Q(cnt,2)=((M_i-1)*(xMax-xMin)/(szX-1))+xMin;
+                    Q(cnt,3)=((M_j-1)*(yMax-yMin)/(szY-1))+yMin;
+                    Q(cnt,4)=((M_k-1)*(zMax-zMin)/(szZ-1))+zMin;
+                    %(*ここまで)
                 
-                %始点が電荷に衝突していた場合にアラートする。
-                if ((Q(cnt,2)==x)&&(Q(cnt,3)==y))&&(Q(cnt,4)==z)
-                    fprintf("unitElectricField3メソッド実行中にエラー。電荷の存在する座標から出発することはできない。\n");
-                    return;
+                    %始点が電荷に衝突していた場合にアラートする。
+                    if ((Q(cnt,2)==x)&&(Q(cnt,3)==y))&&(Q(cnt,4)==z)
+                        fprintf("unitElectricField3メソッド実行中にエラー。電荷の存在する座標から出発することはできない。\n");
+                        return;
+                    end
                 end
             end
         end
     end
+    %{
+    以上の処理により、
+    num番目の電荷の電気量はQ(num,1)に、
+    num番目の電荷のｘ座標はQ(num,2)に、
+    num番目の電荷のｙ座標はQ(num,3)に、
+    num番目の電荷のｚ座標はQ(num,4)に、
+    それぞれ格納された
+    %}
+
+%実験10(4)で追加ここから
+else
+%isMQがtrueなら
+    Q=M;
+    tmp=size(Q);
+    cnt=tmp(1);
 end
-%{
-以上の処理により、
-num番目の電荷の電気量はQ(num,1)に、
-num番目の電荷のｘ座標はQ(num,2)に、
-num番目の電荷のｙ座標はQ(num,3)に、
-num番目の電荷のｚ座標はQ(num,4)に、
-それぞれ格納された
-%}
+%実験10(4)で追加ここまで
+
 %次に、num番目の電荷が点P(x,y,z)に作る電場ベクトルの4πε倍である
 %(e(num,1),e(num,2),e(num,3))を求める。
 scalar(cnt)=0; ...高速化

@@ -1,13 +1,15 @@
-function [endX,endY,endZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N)
+function [endX,endY,endZ]=plotEV3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isMQ )
 %plotEV3 Mによって定められる電荷が作る電場ベクトルを点Pからプロットする
 %   点P(x,y,z)
 %   戻り値は電場ベクトルの終点(つまり可動正電荷の座標)
 %   NはunitElectricField3に渡すためのものである。
 %   Nについての説明はunitElectricField3における説明を参照せよ。
+%   isMQは、行列Mの代わりに行列Qが与えられている場合にtrueとする。(実験10(4)で追加)
+%   isMQはunitElectricField3に渡される。
 
 
 %電場ベクトル(の大きさlengthOfEと単位ベクトルunitOfE)を求める
-[Ex,Ey,Ez]=unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N);
+[Ex,Ey,Ez]=unitElectricField3( M,szX,szY,szZ,xMin,xMax,yMin,yMax,zMin,zMax,x,y,z,N,isMQ );
 %lengthOfE=(Ex^2+Ey^2+Ez^2)^0.5;
 %unitOfE=[Ex/lengthOfE,Ey/lengthOfE,Ez/lengthOfE];
 
